@@ -1,0 +1,23 @@
+{
+  "url": "endpointurl",
+  "token": "agenttoken",
+  "agent": "some-ag-name",
+  "delaySec": 30,
+  "processes": ["svchost", "petterpan"],
+  "windowlogs": ["Security", "Application"],
+  "logs": ["\\var\\log\\better.log", "\\var\\log\\auth.log"],
+  "rule": [
+    {
+      "name": "Cpu Used percent",
+      "if": [
+        { "<": [{ "var": "UsedPercent" }, 50] },
+        "Memory usedpercent is blue",
+        { "<": [{ "var": "UsedPercent" }, 65] },
+        "Memory usedpercent is green",
+        { "<": [{ "var": "UsedPercent" }, 70] },
+        "Memory usedpercent is yellow",
+        "critical"
+      ]
+    }
+  ]
+}
